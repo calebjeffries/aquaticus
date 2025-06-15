@@ -1,0 +1,31 @@
+{
+	"fish": [
+		{
+			"name": "sardine",
+			"texture": "res://images/fish/sardine.png",
+			"weightmin": 0.15,
+			"weightmax": 0.175,
+			"lengthmin": 10,
+			"lengthmax": 30,
+			"quality": 15,
+		},
+		{
+			"name": "salmon",
+			"texture": "res://images/fish/salmon.png",
+			"weightmin": 2.25,
+			"weightmax": 9,
+			"lengthmin": 38,
+			"lengthmax": 89,
+			"quality": 28
+		},
+		{
+			"name": "tuna",
+			"texture": "res://images/fish/tuna.png",
+			"weightmin": 18,
+			"weightmax": 225,
+			"lengthmin": 100,
+			"lengthmax": 450,
+			"quality": 44
+		}
+	]
+}

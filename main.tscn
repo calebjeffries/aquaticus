@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=4 uid="uid://df18g3psyg4q7"]
+
+[ext_resource type="Texture2D" uid="uid://boa6wntccy372" path="res://images/tileset.png" id="1_hsg2t"]
+[ext_resource type="Texture2D" uid="uid://x2dyef0dqu0w" path="res://images/character1.png" id="2_wqipy"]
+[ext_resource type="Script" path="res://player.gd" id="3_gm5jx"]
+[ext_resource type="Texture2D" uid="uid://jt0gh51d221p" path="res://images/character2.png" id="3_ig4q8"]
+[ext_resource type="Texture2D" uid="uid://c2cw2hss5jorf" path="res://images/9-patch-rect.png" id="4_7sesj"]
+[ext_resource type="Texture2D" uid="uid://6n1dojqoufdc" path="res://images/fish/sardine.png" id="4_o4usn"]
+[ext_resource type="Texture2D" uid="uid://cy75l7mf225jk" path="res://images/character3.png" id="4_sxuax"]
+[ext_resource type="FontFile" uid="uid://c5ythpnniqnwj" path="res://Aquaticus Sans.ttf" id="6_8y54k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw7ho"]
+texture = ExtResource("1_hsg2t")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_eruvy"]
+sources/0 = SubResource("TileSetAtlasSource_lw7ho")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5yff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wqipy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ig4q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sxuax")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_drswp"]
+font = ExtResource("6_8y54k")
+font_size = 10
+font_color = Color(0.483105, 0.181074, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kdsb1"]
+font = ExtResource("6_8y54k")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Root" type="Node2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Root"]
+position = Vector2(0, 8)
+tile_map_data = PackedByteArray("AAD/////AAABAAAAAAAAAAAAAAABAAAAAAAAAP//AAABAAAAAAAAAP7/AAABAAAAAAD///7/AAAMAAAAAAD+////AAADAAAAAAD//wAAAAALAAAAAAABAP//AAABAAAAAAABAAAAAAABAAAAAAABAP7/AAABAAAAAAABAAEAAAABAAAAAAACAAAAAAABAAAAAAD+/wAAAAAHAAAAAAD//wEAAAAHAAAAAAD+//7/AAAIAAAAAAD///3/AAALAAAAAAABAP3/AAABAAAAAAACAP7/AAABAAAAAAAAAAEAAAALAAAAAAAAAP3/AAABAAAAAAACAP//AAABAAAAAAD+/wEAAAAAAAAAAAACAAEAAAABAAAAAAACAP3/AAABAAAAAAD+//3/AAAHAAAAAAD4//v/AAABAAAAAAD5//v/AAABAAAAAAD6//v/AAABAAAAAAD7//v/AAAKAAAAAAD8//v/AAACAAAAAAD9//v/AAALAAAAAAD9//z/AAAHAAAAAAD8//z/AAAAAAAAAAD7//z/AAAGAAAAAAD6//z/AAACAAAAAAD5//z/AAACAAAAAAD4//z/AAAKAAAAAAD4//3/AAAFAAAAAAD5//3/AAAAAAAAAAD6//3/AAAAAAAAAAD7//3/AAAAAAAAAAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD8//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6//7/AAAAAAAAAAD5//7/AAAAAAAAAAD4//7/AAAFAAAAAAD4////AAANAAAAAAD5////AAAJAAAAAAD6////AAAAAAAAAAD8////AAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD7////AAAAAAAAAAD4/wAAAAABAAAAAAD4/wEAAAABAAAAAAD4/wIAAAABAAAAAAD4/wMAAAABAAAAAAD5/wMAAAABAAAAAAD6/wMAAAABAAAAAAD7/wMAAAABAAAAAAD8/wMAAAABAAAAAAD9/wMAAAABAAAAAAD8/wIAAAAEAAAAAAD8/wEAAAAAAAAAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAAFAAAAAAD5/wEAAAANAAAAAAD5/wIAAAABAAAAAAD6/wIAAAANAAAAAAD7/wIAAAAEAAAAAAD9/wIAAAAEAAAAAAD9/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAJAAAAAAAAAAIAAAAMAAAAAAAAAAMAAAABAAAAAAD+//z/AAALAAAAAAABAAMAAAABAAAAAAD+/wIAAAAEAAAAAAD//wIAAAAEAAAAAAD//wMAAAABAAAAAAD+/wMAAAABAAAAAAABAAIAAAABAAAAAAD///z/AAABAAAAAAD+//v/AAABAAAAAAD///v/AAABAAAAAAAAAPv/AAABAAAAAAABAPv/AAABAAAAAAACAPv/AAABAAAAAAADAPv/AAABAAAAAAAEAPv/AAABAAAAAAAFAPv/AAABAAAAAAAGAPv/AAABAAAAAAAHAPv/AAABAAAAAAAHAPz/AAABAAAAAAAHAP3/AAABAAAAAAAHAP7/AAABAAAAAAAHAP//AAABAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAMAAAABAAAAAAAGAAMAAAABAAAAAAAFAAMAAAABAAAAAAAEAAMAAAABAAAAAAADAAMAAAABAAAAAAACAAMAAAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAAEAAIAAAABAAAAAAAFAAIAAAABAAAAAAAGAAIAAAABAAAAAAAHAAIAAAABAAAAAAAGAAEAAAABAAAAAAAFAAEAAAABAAAAAAAEAAEAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAAAAPz/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAAEAPz/AAABAAAAAAAFAPz/AAABAAAAAAAGAPz/AAABAAAAAAAGAP3/AAABAAAAAAAGAP7/AAABAAAAAAAGAP//AAABAAAAAAAGAAAAAAABAAAAAAAFAAAAAAABAAAAAAAEAAAAAAABAAAAAAADAP//AAABAAAAAAADAP7/AAABAAAAAAADAP3/AAABAAAAAAAEAP3/AAABAAAAAAAFAP3/AAABAAAAAAAFAP7/AAABAAAAAAAFAP//AAABAAAAAAAEAP//AAABAAAAAAAEAP7/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_eruvy")
+
+[node name="Player" type="AnimatedSprite2D" parent="Root"]
+position = Vector2(-16, 0)
+sprite_frames = SubResource("SpriteFrames_x5yff")
+autoplay = "default"
+script = ExtResource("3_gm5jx")
+
+[node name="FishCaught" type="Node2D" parent="Root"]
+position = Vector2(96, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Root/FishCaught"]
+offset_left = -80.0
+offset_top = -88.0
+offset_right = -40.0
+offset_bottom = -50.0
+scale = Vector2(4, 4)
+texture = ExtResource("4_7sesj")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+
+[node name="Icon" type="Sprite2D" parent="Root/FishCaught"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_o4usn")
+
+[node name="FishName" type="Label" parent="Root/FishCaught"]
+offset_left = -72.0
+offset_top = -80.0
+offset_right = -36.0
+offset_bottom = -70.0
+scale = Vector2(4, 4)
+text = "Sardine"
+label_settings = SubResource("LabelSettings_drswp")
+horizontal_alignment = 1
+
+[node name="Money" type="Label" parent="Root"]
+offset_left = -126.0
+offset_top = -70.0
+offset_right = 12.0
+offset_bottom = -50.0
+text = "$0"
+label_settings = SubResource("LabelSettings_kdsb1")
