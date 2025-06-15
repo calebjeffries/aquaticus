@@ -1,13 +1,29 @@
-[gd_scene load_steps=14 format=4 uid="uid://df18g3psyg4q7"]
+[gd_scene load_steps=31 format=4 uid="uid://df18g3psyg4q7"]
 
 [ext_resource type="Texture2D" uid="uid://boa6wntccy372" path="res://images/tileset.png" id="1_hsg2t"]
-[ext_resource type="Texture2D" uid="uid://x2dyef0dqu0w" path="res://images/character1.png" id="2_wqipy"]
+[ext_resource type="Texture2D" uid="uid://x2dyef0dqu0w" path="res://images/character/fishing1.png" id="2_wqipy"]
 [ext_resource type="Script" path="res://player.gd" id="3_gm5jx"]
-[ext_resource type="Texture2D" uid="uid://jt0gh51d221p" path="res://images/character2.png" id="3_ig4q8"]
+[ext_resource type="Texture2D" uid="uid://jt0gh51d221p" path="res://images/character/fishing2.png" id="3_ig4q8"]
 [ext_resource type="Texture2D" uid="uid://c2cw2hss5jorf" path="res://images/9-patch-rect.png" id="4_7sesj"]
 [ext_resource type="Texture2D" uid="uid://6n1dojqoufdc" path="res://images/fish/sardine.png" id="4_o4usn"]
-[ext_resource type="Texture2D" uid="uid://cy75l7mf225jk" path="res://images/character3.png" id="4_sxuax"]
+[ext_resource type="Texture2D" uid="uid://cy75l7mf225jk" path="res://images/character/fishing3.png" id="4_sxuax"]
+[ext_resource type="Texture2D" uid="uid://bqc5inv4nj33r" path="res://images/character/idle-left1.png" id="5_s2nwm"]
 [ext_resource type="FontFile" uid="uid://c5ythpnniqnwj" path="res://Aquaticus Sans.ttf" id="6_8y54k"]
+[ext_resource type="Texture2D" uid="uid://0xjqayax0f8o" path="res://images/character/idle-left2.png" id="6_qad8w"]
+[ext_resource type="Texture2D" uid="uid://b3snkrvntd28f" path="res://images/character/idle-left3.png" id="7_ufwla"]
+[ext_resource type="Texture2D" uid="uid://cvciqr24go8tg" path="res://images/character/idle-left4.png" id="8_cjq1b"]
+[ext_resource type="Texture2D" uid="uid://b5trrohgl1qlf" path="res://images/character/idle-left5.png" id="9_swxdk"]
+[ext_resource type="Texture2D" uid="uid://b1jc4a0leakad" path="res://images/character/idle-left6.png" id="10_pl6ae"]
+[ext_resource type="Texture2D" uid="uid://dyfqh1qjcxmv1" path="res://images/character/idle-left7.png" id="11_ky744"]
+[ext_resource type="Texture2D" uid="uid://c2autcb45iuid" path="res://images/character/idle-left8.png" id="12_sa31j"]
+[ext_resource type="Texture2D" uid="uid://cl24apfqjoig" path="res://images/character/idle-right1.png" id="13_f6fn8"]
+[ext_resource type="Texture2D" uid="uid://dxfrohmqp6hkx" path="res://images/character/idle-right2.png" id="14_j6bis"]
+[ext_resource type="Texture2D" uid="uid://c2eixmns4qpen" path="res://images/character/idle-right3.png" id="15_chhm4"]
+[ext_resource type="Texture2D" uid="uid://ptk0qe6erba2" path="res://images/character/idle-right4.png" id="16_qi5ug"]
+[ext_resource type="Texture2D" uid="uid://drskk0s3qdr0e" path="res://images/character/idle-right5.png" id="17_453t5"]
+[ext_resource type="Texture2D" uid="uid://diqxow2jqepux" path="res://images/character/idle-right6.png" id="18_cclqh"]
+[ext_resource type="Texture2D" uid="uid://dsji8h3b1qxd8" path="res://images/character/idle-right7.png" id="19_clm6i"]
+[ext_resource type="Texture2D" uid="uid://v0rfpc0orjwx" path="res://images/character/idle-right8.png" id="20_ba17n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw7ho"]
 texture = ExtResource("1_hsg2t")
@@ -44,6 +60,64 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_s2nwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qad8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ufwla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cjq1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_swxdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pl6ae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ky744")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_sa31j")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_f6fn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_j6bis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_chhm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qi5ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_453t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_cclqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_clm6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ba17n")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_drswp"]
@@ -56,6 +130,11 @@ font = ExtResource("6_8y54k")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_7ftk2"]
+font = ExtResource("6_8y54k")
+font_size = 10
+font_color = Color(0.477443, 0.196402, 1.92523e-07, 1)
+
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -65,13 +144,14 @@ scale = Vector2(4, 4)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Root"]
 position = Vector2(0, 8)
-tile_map_data = PackedByteArray("AAD/////AAABAAAAAAAAAAAAAAABAAAAAAAAAP//AAABAAAAAAAAAP7/AAABAAAAAAD///7/AAAMAAAAAAD+////AAADAAAAAAD//wAAAAALAAAAAAABAP//AAABAAAAAAABAAAAAAABAAAAAAABAP7/AAABAAAAAAABAAEAAAABAAAAAAACAAAAAAABAAAAAAD+/wAAAAAHAAAAAAD//wEAAAAHAAAAAAD+//7/AAAIAAAAAAD///3/AAALAAAAAAABAP3/AAABAAAAAAACAP7/AAABAAAAAAAAAAEAAAALAAAAAAAAAP3/AAABAAAAAAACAP//AAABAAAAAAD+/wEAAAAAAAAAAAACAAEAAAABAAAAAAACAP3/AAABAAAAAAD+//3/AAAHAAAAAAD4//v/AAABAAAAAAD5//v/AAABAAAAAAD6//v/AAABAAAAAAD7//v/AAAKAAAAAAD8//v/AAACAAAAAAD9//v/AAALAAAAAAD9//z/AAAHAAAAAAD8//z/AAAAAAAAAAD7//z/AAAGAAAAAAD6//z/AAACAAAAAAD5//z/AAACAAAAAAD4//z/AAAKAAAAAAD4//3/AAAFAAAAAAD5//3/AAAAAAAAAAD6//3/AAAAAAAAAAD7//3/AAAAAAAAAAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD8//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6//7/AAAAAAAAAAD5//7/AAAAAAAAAAD4//7/AAAFAAAAAAD4////AAANAAAAAAD5////AAAJAAAAAAD6////AAAAAAAAAAD8////AAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD7////AAAAAAAAAAD4/wAAAAABAAAAAAD4/wEAAAABAAAAAAD4/wIAAAABAAAAAAD4/wMAAAABAAAAAAD5/wMAAAABAAAAAAD6/wMAAAABAAAAAAD7/wMAAAABAAAAAAD8/wMAAAABAAAAAAD9/wMAAAABAAAAAAD8/wIAAAAEAAAAAAD8/wEAAAAAAAAAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAAFAAAAAAD5/wEAAAANAAAAAAD5/wIAAAABAAAAAAD6/wIAAAANAAAAAAD7/wIAAAAEAAAAAAD9/wIAAAAEAAAAAAD9/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAJAAAAAAAAAAIAAAAMAAAAAAAAAAMAAAABAAAAAAD+//z/AAALAAAAAAABAAMAAAABAAAAAAD+/wIAAAAEAAAAAAD//wIAAAAEAAAAAAD//wMAAAABAAAAAAD+/wMAAAABAAAAAAABAAIAAAABAAAAAAD///z/AAABAAAAAAD+//v/AAABAAAAAAD///v/AAABAAAAAAAAAPv/AAABAAAAAAABAPv/AAABAAAAAAACAPv/AAABAAAAAAADAPv/AAABAAAAAAAEAPv/AAABAAAAAAAFAPv/AAABAAAAAAAGAPv/AAABAAAAAAAHAPv/AAABAAAAAAAHAPz/AAABAAAAAAAHAP3/AAABAAAAAAAHAP7/AAABAAAAAAAHAP//AAABAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAMAAAABAAAAAAAGAAMAAAABAAAAAAAFAAMAAAABAAAAAAAEAAMAAAABAAAAAAADAAMAAAABAAAAAAACAAMAAAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAAEAAIAAAABAAAAAAAFAAIAAAABAAAAAAAGAAIAAAABAAAAAAAHAAIAAAABAAAAAAAGAAEAAAABAAAAAAAFAAEAAAABAAAAAAAEAAEAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAAAAPz/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAAEAPz/AAABAAAAAAAFAPz/AAABAAAAAAAGAPz/AAABAAAAAAAGAP3/AAABAAAAAAAGAP7/AAABAAAAAAAGAP//AAABAAAAAAAGAAAAAAABAAAAAAAFAAAAAAABAAAAAAAEAAAAAAABAAAAAAADAP//AAABAAAAAAADAP7/AAABAAAAAAADAP3/AAABAAAAAAAEAP3/AAABAAAAAAAFAP3/AAABAAAAAAAFAP7/AAABAAAAAAAFAP//AAABAAAAAAAEAP//AAABAAAAAAAEAP7/AAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAABAAAAAAAAAAAAAAABAAAAAAAAAP//AAABAAAAAAAAAP7/AAABAAAAAAD///7/AAAMAAAAAAD+////AAADAAAAAAD//wAAAAALAAAAAAABAP//AAABAAAAAAABAAAAAAABAAAAAAABAP7/AAABAAAAAAABAAEAAAABAAAAAAACAAAAAAABAAAAAAD+/wAAAAAHAAAAAAD//wEAAAAHAAAAAAD+//7/AAAIAAAAAAD///3/AAALAAAAAAABAP3/AAABAAAAAAACAP7/AAABAAAAAAAAAAEAAAALAAAAAAAAAP3/AAABAAAAAAACAP//AAABAAAAAAD+/wEAAAAAAAAAAAACAAEAAAABAAAAAAACAP3/AAABAAAAAAD+//3/AAAHAAAAAAD4//v/AAABAAAAAAD5//v/AAABAAAAAAD6//v/AAABAAAAAAD7//v/AAAKAAAAAAD8//v/AAACAAAAAAD9//v/AAALAAAAAAD9//z/AAAHAAAAAAD8//z/AAAAAAAAAAD7//z/AAAGAAAAAAD6//z/AAACAAAAAAD5//z/AAACAAAAAAD4//z/AAAKAAAAAAD4//3/AAAFAAAAAAD5//3/AAAAAAAAAAD6//3/AAAAAAAAAAD7//3/AAAAAAAAAAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD8//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6//7/AAAAAAAAAAD5//7/AAAAAAAAAAD4//7/AAAFAAAAAAD4////AAANAAAAAAD5////AAAJAAAAAAD6////AAAAAAAAAAD8////AAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD7////AAAAAAAAAAD4/wAAAAABAAAAAAD4/wEAAAABAAAAAAD4/wIAAAABAAAAAAD4/wMAAAABAAAAAAD5/wMAAAABAAAAAAD6/wMAAAABAAAAAAD7/wMAAAABAAAAAAD8/wMAAAABAAAAAAD9/wMAAAABAAAAAAD8/wIAAAAEAAAAAAD8/wEAAAAAAAAAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAAFAAAAAAD5/wEAAAANAAAAAAD5/wIAAAABAAAAAAD6/wIAAAANAAAAAAD7/wIAAAAEAAAAAAD9/wIAAAAEAAAAAAD9/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAJAAAAAAAAAAIAAAAMAAAAAAAAAAMAAAABAAAAAAD+//z/AAALAAAAAAABAAMAAAABAAAAAAD+/wIAAAAEAAAAAAD//wIAAAAEAAAAAAD//wMAAAABAAAAAAD+/wMAAAABAAAAAAABAAIAAAABAAAAAAD///z/AAABAAAAAAD///v/AAABAAAAAAAAAPv/AAABAAAAAAABAPv/AAABAAAAAAACAPv/AAABAAAAAAADAPv/AAABAAAAAAAEAPv/AAABAAAAAAAFAPv/AAABAAAAAAAGAPv/AAABAAAAAAAHAPv/AAABAAAAAAAHAPz/AAABAAAAAAAHAP3/AAABAAAAAAAHAP7/AAABAAAAAAAHAP//AAABAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAMAAAABAAAAAAAGAAMAAAABAAAAAAAFAAMAAAABAAAAAAAEAAMAAAABAAAAAAADAAMAAAABAAAAAAACAAMAAAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAAEAAIAAAABAAAAAAAFAAIAAAABAAAAAAAGAAIAAAABAAAAAAAHAAIAAAABAAAAAAAGAAEAAAABAAAAAAAFAAEAAAABAAAAAAAEAAEAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAAAAPz/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAAEAPz/AAABAAAAAAAFAPz/AAABAAAAAAAGAPz/AAABAAAAAAAGAP3/AAABAAAAAAAGAP7/AAABAAAAAAAGAP//AAABAAAAAAAGAAAAAAABAAAAAAAFAAAAAAABAAAAAAAEAAAAAAABAAAAAAADAP//AAABAAAAAAADAP7/AAABAAAAAAADAP3/AAABAAAAAAAEAP3/AAABAAAAAAAFAP3/AAABAAAAAAAFAP7/AAABAAAAAAAFAP//AAABAAAAAAAEAP//AAABAAAAAAAEAP7/AAABAAAAAAD+//v/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_eruvy")
 
 [node name="Player" type="AnimatedSprite2D" parent="Root"]
-position = Vector2(-16, 0)
+position = Vector2(-8, 2)
 sprite_frames = SubResource("SpriteFrames_x5yff")
 autoplay = "default"
+frame_progress = 0.909305
 script = ExtResource("3_gm5jx")
 
 [node name="FishCaught" type="Node2D" parent="Root"]
@@ -110,3 +190,26 @@ offset_right = 12.0
 offset_bottom = -50.0
 text = "$0"
 label_settings = SubResource("LabelSettings_kdsb1")
+
+[node name="Inventory" type="NinePatchRect" parent="Root"]
+visible = false
+offset_left = -26.0
+offset_top = -64.0
+offset_right = 26.0
+offset_bottom = -50.0
+texture = ExtResource("4_7sesj")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Label" type="Label" parent="Root/Inventory"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 25.0
+text = "Inventory"
+label_settings = SubResource("LabelSettings_7ftk2")
+
+[node name="Contents" type="Node2D" parent="Root/Inventory"]
