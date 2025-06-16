@@ -1,8 +1,8 @@
-[gd_scene load_steps=31 format=4 uid="uid://df18g3psyg4q7"]
+[gd_scene load_steps=35 format=4 uid="uid://df18g3psyg4q7"]
 
 [ext_resource type="Texture2D" uid="uid://boa6wntccy372" path="res://images/tileset.png" id="1_hsg2t"]
 [ext_resource type="Texture2D" uid="uid://x2dyef0dqu0w" path="res://images/character/fishing1.png" id="2_wqipy"]
-[ext_resource type="Script" path="res://player.gd" id="3_gm5jx"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_gm5jx"]
 [ext_resource type="Texture2D" uid="uid://jt0gh51d221p" path="res://images/character/fishing2.png" id="3_ig4q8"]
 [ext_resource type="Texture2D" uid="uid://c2cw2hss5jorf" path="res://images/9-patch-rect.png" id="4_7sesj"]
 [ext_resource type="Texture2D" uid="uid://6n1dojqoufdc" path="res://images/fish/sardine.png" id="4_o4usn"]
@@ -24,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://diqxow2jqepux" path="res://images/character/idle-right6.png" id="18_cclqh"]
 [ext_resource type="Texture2D" uid="uid://dsji8h3b1qxd8" path="res://images/character/idle-right7.png" id="19_clm6i"]
 [ext_resource type="Texture2D" uid="uid://v0rfpc0orjwx" path="res://images/character/idle-right8.png" id="20_ba17n"]
+[ext_resource type="Texture2D" uid="uid://drxy46wrrc84m" path="res://images/selected-fish-outline.png" id="25_677s2"]
+[ext_resource type="Texture2D" uid="uid://sgvq2d11wpnn" path="res://images/empty.png" id="26_2vomw"]
+[ext_resource type="Script" path="res://scripts/inventory_full.gd" id="27_qk80k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw7ho"]
 texture = ExtResource("1_hsg2t")
@@ -135,6 +138,11 @@ font = ExtResource("6_8y54k")
 font_size = 10
 font_color = Color(0.477443, 0.196402, 1.92523e-07, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_u2cqi"]
+font = ExtResource("6_8y54k")
+font_size = 20
+font_color = Color(0.85, 0, 0, 1)
+
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -151,7 +159,7 @@ tile_set = SubResource("TileSet_eruvy")
 position = Vector2(-8, 2)
 sprite_frames = SubResource("SpriteFrames_x5yff")
 autoplay = "default"
-frame_progress = 0.909305
+frame_progress = 0.370313
 script = ExtResource("3_gm5jx")
 
 [node name="FishCaught" type="Node2D" parent="Root"]
@@ -196,7 +204,7 @@ visible = false
 offset_left = -26.0
 offset_top = -64.0
 offset_right = 26.0
-offset_bottom = -50.0
+offset_bottom = -30.0
 texture = ExtResource("4_7sesj")
 patch_margin_left = 3
 patch_margin_top = 3
@@ -213,3 +221,21 @@ text = "Inventory"
 label_settings = SubResource("LabelSettings_7ftk2")
 
 [node name="Contents" type="Node2D" parent="Root/Inventory"]
+
+[node name="Selector" type="Sprite2D" parent="Root/Inventory"]
+position = Vector2(26, 22)
+texture = ExtResource("25_677s2")
+
+[node name="Empty" type="Sprite2D" parent="Root/Inventory"]
+position = Vector2(26, 22)
+texture = ExtResource("26_2vomw")
+
+[node name="InventoryFull" type="Label" parent="Root"]
+offset_left = -96.0
+offset_top = -72.0
+offset_right = 96.0
+offset_bottom = -48.0
+text = "INVENTORY FULL!"
+label_settings = SubResource("LabelSettings_u2cqi")
+horizontal_alignment = 1
+script = ExtResource("27_qk80k")
