@@ -5,19 +5,21 @@ var fishicon
 var fishname
 var moneylabel
 var inventorynode
+var storenode
 
 var fishinfo
 var money = 0
 var inventory = []
 var selectedinventoryfish = 0
+var rodlevel = 1
 
 class Fish:
 	var name: String
-	var weight: int
-	var length: int
+	var weight: float
+	var length: float
 	var quality: int
 	var texture: String
-	func _init(fishname: String, fishweight: int, fishlength: int, fishquality: int, fishtexture: String):
+	func _init(fishname: String, fishweight: float, fishlength: float, fishquality: int, fishtexture: String):
 		name = fishname
 		weight = fishweight
 		length = fishlength
@@ -28,6 +30,7 @@ func _ready():
 	fishcaught = get_node("../FishCaught")
 	moneylabel = get_node("../Money")
 	inventorynode = get_node("../Inventory")
+	storenode = get_node("../Store")
 	fishicon = fishcaught.get_node("Icon")
 	fishname = fishcaught.get_node("FishName")
 	
@@ -50,20 +53,28 @@ func _input(event: InputEvent) -> void:
 			moneylabel.text = "$" + str(money)
 			inventory.remove_at(selectedinventoryfish)
 			renderinventory()
+		elif event.is_action_pressed("menu-cycle"):
+			inventorynode.visible = false
+			storenode.visible = true
+			renderstore()
+	elif storenode.visible == true:
+		if event.is_action_pressed("select") and rodlevel < len(fishinfo.fish) and money >= getrodprice(rodlevel + 1):
+			money -= getrodprice(rodlevel + 1)
+			rodlevel += 1
+			renderstore()
+		elif event.is_action_pressed("menu-cycle"):
+			storenode.visible = false
 	else:
 		if event.is_action_pressed("select"):
 			gofishing()
-	if event.is_action_pressed("inventory"):
-		if inventorynode.visible == false:
+		if event.is_action_pressed("menu-cycle"):
 			inventorynode.visible = true
 			renderinventory()
-		else:
-			inventorynode.visible = false
 
 func gofishing():
 	if len(inventory) < 5:
 		fishcaught.visible = true
-		var catch = fishinfo.fish[randi_range(0, len(fishinfo.fish)-1)]
+		var catch = fishinfo.fish[randi_range(0, rodlevel-1)]
 		fishicon.texture = load(catch.texture)
 		fishname.text = catch.name.capitalize()
 		var weight = randf_range(catch.weightmin, catch.weightmax)
@@ -94,3 +105,21 @@ func renderinventory():
 			inventorynode.get_node("Contents").add_child(newnode)
 			fishnum += 1
 		inventorynode.size.y = 18 + 20 * fishnum
+
+func renderstore():
+	storenode.get_node("Level").text = "lvl. " + str(rodlevel) + " > lvl. " + str(rodlevel + 1)
+	if rodlevel == len(fishinfo.fish):
+		storenode.get_node("Level").text = "lvl. " + str(rodlevel)
+		storenode.get_node("Price").text = "MAX"
+		storenode.get_node("Price").label_settings.font_color = Color(1, 0, 0, 1)
+	else:
+		var rodprice = getrodprice(rodlevel + 1)
+		storenode.get_node("Level").text = "lvl. " + str(rodlevel) + " > lvl. " + str(rodlevel + 1)
+		storenode.get_node("Price").text = "$" + str(rodprice)
+		if money >= rodprice:
+			storenode.get_node("Price").label_settings.font_color = Color(0, 1, 0, 1)
+		else:
+			storenode.get_node("Price").label_settings.font_color = Color(1, 0, 0, 1)
+
+func getrodprice(level) -> int:
+	return 10  * (level - 1) ** 4
