@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://df18g3psyg4q7"]
+[gd_scene load_steps=46 format=4 uid="uid://df18g3psyg4q7"]
 
 [ext_resource type="Texture2D" uid="uid://boa6wntccy372" path="res://images/tileset.png" id="1_hsg2t"]
 [ext_resource type="Texture2D" uid="uid://x2dyef0dqu0w" path="res://images/character/fishing1.png" id="2_wqipy"]
@@ -28,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://drxy46wrrc84m" path="res://images/selected-fish-outline.png" id="25_677s2"]
 [ext_resource type="Texture2D" uid="uid://sgvq2d11wpnn" path="res://images/empty.png" id="26_2vomw"]
 [ext_resource type="Texture2D" uid="uid://b4pc5s3fecxsm" path="res://images/fishing-rod.png" id="27_6hp6g"]
-[ext_resource type="Script" path="res://scripts/inventory_full.gd" id="27_qk80k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw7ho"]
 texture = ExtResource("1_hsg2t")
@@ -130,6 +129,53 @@ font = ExtResource("6_8y54k")
 font_size = 10
 font_color = Color(0.483105, 0.181074, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ju2tu"]
+font = ExtResource("6_8y54k")
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cqpoh"]
+font = ExtResource("6_8y54k")
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_4gtvm"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1.8025, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yc805"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qxum8"]
+_data = {
+"RESET": SubResource("Animation_yc805"),
+"fade_out": SubResource("Animation_4gtvm")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_kdsb1"]
 font = ExtResource("6_8y54k")
 font_size = 20
@@ -155,6 +201,42 @@ font = ExtResource("6_8y54k")
 font_size = 20
 font_color = Color(0.85, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_tkf5l"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.8025, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i72w6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nds31"]
+_data = {
+"RESET": SubResource("Animation_i72w6"),
+"fade_out": SubResource("Animation_tkf5l")
+}
+
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -176,32 +258,52 @@ script = ExtResource("3_gm5jx")
 
 [node name="FishCaught" type="Node2D" parent="Root"]
 position = Vector2(96, 0)
-scale = Vector2(0.25, 0.25)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Root/FishCaught"]
-offset_left = -80.0
-offset_top = -88.0
-offset_right = -40.0
-offset_bottom = -50.0
-scale = Vector2(4, 4)
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
 texture = ExtResource("4_7sesj")
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="Icon" type="Sprite2D" parent="Root/FishCaught"]
-scale = Vector2(4, 4)
+position = Vector2(-4, -2)
 texture = ExtResource("4_o4usn")
 
 [node name="FishName" type="Label" parent="Root/FishCaught"]
-offset_left = -72.0
-offset_top = -80.0
-offset_right = -36.0
-offset_bottom = -70.0
-scale = Vector2(4, 4)
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 14.0
+offset_bottom = -12.0
 text = "Sardine"
 label_settings = SubResource("LabelSettings_drswp")
 horizontal_alignment = 1
+
+[node name="Weight" type="Label" parent="Root/FishCaught"]
+offset_left = -28.0
+offset_top = 10.0
+offset_right = -4.0
+offset_bottom = 20.0
+text = "10kg"
+label_settings = SubResource("LabelSettings_ju2tu")
+
+[node name="Length" type="Label" parent="Root/FishCaught"]
+offset_left = -4.0
+offset_top = 10.0
+offset_right = 20.0
+offset_bottom = 20.0
+text = "10cm"
+label_settings = SubResource("LabelSettings_cqpoh")
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Root/FishCaught"]
+libraries = {
+"": SubResource("AnimationLibrary_qxum8")
+}
 
 [node name="Money" type="Label" parent="Root"]
 offset_left = -126.0
@@ -256,6 +358,7 @@ patch_margin_right = 3
 patch_margin_bottom = 3
 
 [node name="Label" type="Label" parent="Root/Store"]
+layout_mode = 0
 offset_left = 18.0
 offset_top = 2.0
 offset_right = 62.0
@@ -269,6 +372,7 @@ position = Vector2(24, 20)
 texture = ExtResource("27_6hp6g")
 
 [node name="Level" type="Label" parent="Root/Store"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 28.0
 offset_right = 74.0
@@ -288,7 +392,6 @@ label_settings = SubResource("LabelSettings_45gal")
 horizontal_alignment = 1
 
 [node name="InventoryFull" type="Label" parent="Root"]
-modulate = Color(1, 1, 1, 0)
 offset_left = -96.0
 offset_top = -72.0
 offset_right = 96.0
@@ -296,4 +399,8 @@ offset_bottom = -48.0
 text = "INVENTORY FULL!"
 label_settings = SubResource("LabelSettings_u2cqi")
 horizontal_alignment = 1
-script = ExtResource("27_qk80k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Root/InventoryFull"]
+libraries = {
+"": SubResource("AnimationLibrary_nds31")
+}

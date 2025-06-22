@@ -1,6 +1,15 @@
 {
 	"fish": [
 		{
+			"name": "shrimp",
+			"texture": "res://images/fish/shrimp.png",
+			"weightmin": 0.007,
+			"weightmax": 0.03,
+			"lengthmin": 3,
+			"lengthmax": 10,
+			"quality": 32,
+		},
+		{
 			"name": "sardine",
 			"texture": "res://images/fish/sardine.png",
 			"weightmin": 0.15,
@@ -8,6 +17,15 @@
 			"lengthmin": 10,
 			"lengthmax": 30,
 			"quality": 15,
+		},
+		{
+			"name": "mackerel",
+			"texture": "res://images/fish/mackerel.png",
+			"weightmin": 0.5,
+			"weightmax": 1.5,
+			"lengthmin": 30,
+			"lengthmax": 50,
+			"quality": 18
 		},
 		{
 			"name": "salmon",

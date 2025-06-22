@@ -37,6 +37,9 @@ func _ready():
 	var jsonFile = "res://data/fish.json"
 	var jsonFileText = FileAccess.get_file_as_string(jsonFile)
 	fishinfo = JSON.parse_string(jsonFileText)
+	
+	get_node("../InventoryFull").modulate.a = 0
+	fishcaught.modulate.a = 0
 
 func _input(event: InputEvent) -> void:
 	if inventorynode.visible == true:
@@ -49,7 +52,7 @@ func _input(event: InputEvent) -> void:
 				inventorynode.get_node("Selector").position.y -= 20
 				selectedinventoryfish -= 1
 		elif event.is_action_pressed("select") and len(inventory) > 0:
-			money += round(inventory[selectedinventoryfish].weight * inventory[selectedinventoryfish].quality)
+			money += snapped(inventory[selectedinventoryfish].weight * inventory[selectedinventoryfish].quality, 0.01)
 			moneylabel.text = "$" + str(money)
 			inventory.remove_at(selectedinventoryfish)
 			renderinventory()
@@ -60,6 +63,7 @@ func _input(event: InputEvent) -> void:
 	elif storenode.visible == true:
 		if event.is_action_pressed("select") and rodlevel < len(fishinfo.fish) and money >= getrodprice(rodlevel + 1):
 			money -= getrodprice(rodlevel + 1)
+			money = snapped(money, 0.01)
 			rodlevel += 1
 			renderstore()
 		elif event.is_action_pressed("menu-cycle"):
@@ -79,9 +83,15 @@ func gofishing():
 		fishname.text = catch.name.capitalize()
 		var weight = randf_range(catch.weightmin, catch.weightmax)
 		var length = randf_range(catch.lengthmin, catch.lengthmax)
+		if weight >= 1:
+			fishcaught.get_node("Weight").text = str(round(weight)) + "kg"
+		else:
+			fishcaught.get_node("Weight").text = str(round(weight * 1000)) + "g"
+		fishcaught.get_node("Length").text = str(round(length)) + "cm"
 		inventory.append(Fish.new(catch.name, weight, length, catch.quality, catch.texture))
+		fishcaught.get_node("AnimationPlayer").play("fade_out")
 	else:
-		get_node("../InventoryFull").modulate.a = 255
+		get_node("../InventoryFull").get_node("AnimationPlayer").play("fade_out")
 
 func renderinventory():
 	var fishnum = 0
@@ -122,4 +132,4 @@ func renderstore():
 			storenode.get_node("Price").label_settings.font_color = Color(1, 0, 0, 1)
 
 func getrodprice(level) -> int:
-	return 10  * (level - 1) ** 4
+	return 10  * (level - 1) ** 2
