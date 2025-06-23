@@ -1,9 +1,9 @@
 extends Label
 
-var playernode
+var rootnode
 
 func _ready() -> void:
-	playernode = get_node("../Player")
+	rootnode = get_node("../..")
 
-func _process(delta: float) -> void:
-	text = "$" + str(playernode.money)
+func _process(_delta: float) -> void:
+	text = "$" + str(rootnode.money).pad_decimals(2)
