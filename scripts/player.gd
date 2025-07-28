@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 var cameranode
 
 var enabled = true
+var fishing = false
 var xdirection = 0
 
 @export var speed : float
@@ -13,6 +14,11 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if enabled == true:
+		if fishing == true:
+			position.x = 20
+			play("fishing")
+			return
+		position.x = 0
 		if Input.is_action_pressed("left"):
 			xdirection = -1
 		elif Input.is_action_pressed("right"):

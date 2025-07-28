@@ -103,7 +103,12 @@ func _input(event: InputEvent) -> void:
 				renderinventory()
 
 func gofishing():
+	if playernode.fishing:
+		return
 	if len(inventory) < 5:
+		playernode.fishing = true
+		await get_tree().create_timer(randf()).timeout
+		playernode.fishing = false
 		fishcaught.visible = true
 		var catch = fishinfo.fish[randi_range(0, rodlevel-1)]
 		fishcaughticon.texture = load(catch.texture)

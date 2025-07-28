@@ -61,7 +61,7 @@ sources/0 = SubResource("TileSetAtlasSource_lw7ho")
 size = Vector2(96, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckhw0"]
-size = Vector2(44, 64)
+size = Vector2(18, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x5yff"]
 animations = [{
@@ -76,7 +76,7 @@ animations = [{
 "texture": ExtResource("4_pruds")
 }],
 "loop": true,
-"name": &"default",
+"name": &"fishing",
 "speed": 1.0
 }, {
 "frames": [{
@@ -636,7 +636,7 @@ shape = SubResource("RectangleShape2D_rneqx")
 [node name="FishingArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingArea"]
-position = Vector2(10, 32)
+position = Vector2(11, 32)
 shape = SubResource("RectangleShape2D_ckhw0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -649,8 +649,7 @@ zoom = Vector2(4, 4)
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_x5yff")
 animation = &"idle"
-autoplay = "default"
-frame_progress = 0.794376
+autoplay = "idle"
 script = ExtResource("3_gm5jx")
 speed = 20.0
 
