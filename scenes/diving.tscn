@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cs85gek47j8r3"]
+[gd_scene load_steps=18 format=4 uid="uid://cs85gek47j8r3"]
 
 [ext_resource type="Texture2D" uid="uid://1ikf7poxyp3o" path="res://images/tilesets/underwater.png" id="1_5t6xa"]
 [ext_resource type="Script" uid="uid://djy5h3dbj3yrj" path="res://scripts/scene-change-area.gd" id="1_6u2no"]
@@ -8,9 +8,14 @@
 [ext_resource type="Script" uid="uid://bgashvisn1s7v" path="res://scripts/diving.gd" id="2_q4pcu"]
 [ext_resource type="Script" uid="uid://dg7v4f211m2ol" path="res://scripts/camera.gd" id="4_jggy4"]
 [ext_resource type="Texture2D" uid="uid://bwfbot51sk2uy" path="res://images/character/underwater/underwater.png" id="8_k5kkw"]
+[ext_resource type="Texture2D" uid="uid://32ljqc18mwv8" path="res://images/progressbars/breath/breath-under.png" id="8_ufggo"]
+[ext_resource type="Texture2D" uid="uid://dsojiud422ppv" path="res://images/progressbars/breath/breath-progress.png" id="9_6xfkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21gp6"]
 size = Vector2(8, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufggo"]
+size = Vector2(1200, 368)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv85c"]
 texture = ExtResource("2_fdsc0")
@@ -70,12 +75,19 @@ scene = "res://scenes/on-land.tscn"
 position = Vector2(-124, -52)
 shape = SubResource("RectangleShape2D_21gp6")
 
+[node name="BreathArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreathArea"]
+position = Vector2(480, 136)
+shape = SubResource("RectangleShape2D_ufggo")
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(480, 136)
 scale = Vector2(490.667, 122.667)
 texture = ExtResource("1_gmt1p")
 
 [node name="TreasureChest" parent="." instance=ExtResource("2_2ap7a")]
+position = Vector2(168, 304)
 
 [node name="DecorationTiles" type="TileMapLayer" parent="."]
 position = Vector2(0, -8)
@@ -100,6 +112,17 @@ script = ExtResource("4_jggy4")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(0, -56)
 script = ExtResource("2_q4pcu")
+breath_rate = 2
+
+[node name="BreathBar" type="TextureProgressBar" parent="Player"]
+offset_left = -16.0
+offset_top = -12.0
+offset_right = 16.0
+offset_bottom = -8.0
+max_value = 32.0
+value = 32.0
+texture_under = ExtResource("8_ufggo")
+texture_progress = ExtResource("9_6xfkn")
 
 [node name="Sprite" type="Sprite2D" parent="Player"]
 texture = ExtResource("8_k5kkw")
@@ -108,3 +131,5 @@ texture = ExtResource("8_k5kkw")
 shape = SubResource("RectangleShape2D_qr7ae")
 
 [connection signal="body_entered" from="LandArea" to="LandArea" method="_on_body_entered"]
+[connection signal="body_entered" from="BreathArea" to="Player" method="go_underwater"]
+[connection signal="body_exited" from="BreathArea" to="Player" method="go_above_water"]

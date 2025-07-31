@@ -16,7 +16,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="TreasureChest" type="Sprite2D"]
-position = Vector2(168, 304)
 texture = ExtResource("1_guqyf")
 script = ExtResource("2_d5kif")
 

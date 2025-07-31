@@ -17,6 +17,7 @@ class Fish:
 var money = 0
 var inventory = []
 var rod_level = 1
+var dead = false
 
 var action1_func
 var action2_func
@@ -24,10 +25,14 @@ var action2_func
 var initial_scene = preload("res://scenes/on-land.tscn")
 var actions_bar
 var actions_bar_text
+var money_node
+var fade_out_player
 
 func _ready():
 	actions_bar = get_node("CanvasLayer/UI/ActionsBar")
 	actions_bar_text = get_node("CanvasLayer/UI/ActionsBar/Label")
+	money_node = get_node("CanvasLayer/UI/Money")
+	fade_out_player = get_node("CanvasLayer/UI/ColorRect/AnimationPlayer")
 	add_child(initial_scene.instantiate()) # Load initial scene
 
 # Process input if there are actions available
@@ -36,6 +41,13 @@ func _input(event: InputEvent):
 		action1_func.call()
 	elif event.is_action_pressed("quit") and action2_func:
 		action2_func.call()
+
+# Switches scene when you die
+func _physics_process(_delta: float):
+	if dead and not fade_out_player.is_playing():
+		switch_scene("res://scenes/on-land.tscn")
+		fade_out_player.play("RESET") # Reset the transparency
+		dead = false
 
 # Get available actions and display them on the action bar
 func actions_available(action1_name: String, action1_function: Callable, action2_name = "", action2_function = null):
@@ -60,7 +72,15 @@ func clear_actions():
 func money_add(amount: float):
 	money += amount
 	money = snapped(money, 0.01) # Snap to the value of pennies
-	get_node("CanvasLayer/UI/Money").update() # Update text
+	money_node.update() # Update text
+
+# Die and respawn
+func die():
+	dead = true
+	money = 0 # Loose all money
+	money_node.update()
+	inventory = [] # Loose inventory
+	fade_out_player.play("fade_out") # Fade out
 
 # Switch to another scene
 func switch_scene(path: String):
