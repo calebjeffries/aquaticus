@@ -65,11 +65,11 @@ func money_add(amount: float):
 # Switch to another scene
 func switch_scene(path: String):
 	# Lambda function to change scene
-	var switch_scene_hard = func(path: String):
+	var switch_scene_hard = func(scene_path: String):
 		for child in get_children(): # Remove all children except for the UI
 			if child.name != "CanvasLayer":
 				child.queue_free()
-		add_child(load(path).instantiate()) # Add the new scene
+		add_child(load(scene_path).instantiate()) # Add the new scene
 	
 	# Wait until no physics processes are being run to switch scenes
 	switch_scene_hard.call_deferred(path)

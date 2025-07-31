@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://dbagv5cslv62t"]
 
-[ext_resource type="Script" path="res://scripts/money.gd" id="3_k2k2b"]
+[ext_resource type="Script" uid="uid://dlg0ot7n8wmod" path="res://scripts/money.gd" id="3_k2k2b"]
 [ext_resource type="Texture2D" uid="uid://c013vryekg7d" path="res://images/actionsbar.png" id="7_ocycq"]
 [ext_resource type="FontFile" uid="uid://bxtkc5ugxtbnh" path="res://Aquaticus Sans.ttf" id="8_r7ux7"]
 

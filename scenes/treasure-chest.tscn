@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c04q6jqgp603b"]
 
 [ext_resource type="Texture2D" uid="uid://bwt7cagt11tff" path="res://images/treasure-chest.png" id="1_guqyf"]
-[ext_resource type="Script" path="res://scripts/treasure-chest.gd" id="2_d5kif"]
+[ext_resource type="Script" uid="uid://b10m7l4pu5soj" path="res://scripts/treasure-chest.gd" id="2_d5kif"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1i35"]
 radius = 32.0

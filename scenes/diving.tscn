@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=4 uid="uid://cs85gek47j8r3"]
 
 [ext_resource type="Texture2D" uid="uid://1ikf7poxyp3o" path="res://images/tilesets/underwater.png" id="1_5t6xa"]
-[ext_resource type="Script" path="res://scripts/scene-change-area.gd" id="1_6u2no"]
+[ext_resource type="Script" uid="uid://djy5h3dbj3yrj" path="res://scripts/scene-change-area.gd" id="1_6u2no"]
 [ext_resource type="Texture2D" uid="uid://b4emfe188n3u" path="res://images/underwater-background.png" id="1_gmt1p"]
 [ext_resource type="PackedScene" uid="uid://c04q6jqgp603b" path="res://scenes/treasure-chest.tscn" id="2_2ap7a"]
 [ext_resource type="Texture2D" uid="uid://b4dhfgay5h5dr" path="res://images/tilesets/underwater-decorations.png" id="2_fdsc0"]
-[ext_resource type="Script" path="res://scripts/diving.gd" id="2_q4pcu"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="4_jggy4"]
+[ext_resource type="Script" uid="uid://bgashvisn1s7v" path="res://scripts/diving.gd" id="2_q4pcu"]
+[ext_resource type="Script" uid="uid://dg7v4f211m2ol" path="res://scripts/camera.gd" id="4_jggy4"]
 [ext_resource type="Texture2D" uid="uid://bwfbot51sk2uy" path="res://images/character/underwater/underwater.png" id="8_k5kkw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21gp6"]

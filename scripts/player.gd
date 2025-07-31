@@ -24,6 +24,8 @@ func _physics_process(_delta: float):
 		else:
 			position = round(position) # Otherwise, snap to the pixels
 		play_animation() # Play correct animation
+	elif enabled == false:
+		sprite_node.play("idle") # Play idle animation if movement is disabled
 
 # Play correct animation in the correct direction
 func play_animation():

@@ -15,9 +15,11 @@ var store_node
 var store_level_text
 var store_price_text
 var player_node
+var player_sprite
 
 var fish_info
 var selected_inventory_fish = 0
+var fishing_direction
 
 # Class for fish
 class Fish:
@@ -50,6 +52,7 @@ func _ready():
 	store_level_text = store_node.get_node("Level")
 	store_price_text = store_node.get_node("Price")
 	player_node = get_node("Player")
+	player_sprite = player_node.get_node("Sprite")
 	
 	# Load fish information
 	var json_file = "res://data/fish.json"
@@ -81,6 +84,7 @@ func go_fishing():
 		return
 	
 	# Show fishing animation until a fish is caught
+	player_sprite.flip_h = 0 if fishing_direction == 1 else 1 # Face player in the right direction
 	player_node.start_fishing()
 	await get_tree().create_timer(randf()).timeout
 	player_node.stop_fishing()
@@ -95,10 +99,10 @@ func go_fishing():
 	fish_caught_icon.texture = load(catch.texture)
 	fish_caught_name.text = catch.name.capitalize()
 	if weight >= 1: # Use units that make sense
-		fish_caught_weight.text = str(round(weight)) + "kg"
+		fish_caught_weight.text = str(int(round(weight))) + "kg"
 	else:
-		fish_caught_weight.text = str(round(weight * 1000)) + "g"
-	fish_caught_length.text = str(round(length)) + "cm"
+		fish_caught_weight.text = str(int(round(weight * 1000))) + "g"
+	fish_caught_length.text = str(int(round(length))) + "cm"
 	gc.inventory.append(Fish.new(catch.name, weight, length, catch.quality, catch.texture))
 	
 	# Fade out the info box
@@ -172,7 +176,7 @@ func render_store():
 
 # Buy a rod upgrade
 func upgrade_rod():
-	if gc.rod_level < len(fish_info.fish) and gc.money >= get_rod_price(gc.rodl_evel + 1):
+	if gc.rod_level < len(fish_info.fish) and gc.money >= get_rod_price(gc.rod_level + 1):
 		gc.money_add(-get_rod_price(gc.rod_level + 1))
 		gc.rod_level += 1
 		render_store()
@@ -193,7 +197,8 @@ func enter_store_mode(_body: Node2D = null): # Add a store action
 func enter_market_mode(_body: Node2D = null): # Add a market action
 	gc.actions_available("sell fish", render_market)
 
-func enter_fishing_mode(_body: Node2D = null): # Add a fishing action
+func enter_fishing_mode(_body: Node2D, water_direction: int): # Add a fishing action
+	fishing_direction = water_direction
 	gc.actions_available("go fishing", go_fishing)
 
 func clear_mode(_body: Node2D = null): # Clear actions

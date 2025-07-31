@@ -1,12 +1,12 @@
 [gd_scene load_steps=62 format=4 uid="uid://fif4u45pt71v"]
 
-[ext_resource type="Script" path="res://scripts/on-land.gd" id="1_6yw5w"]
+[ext_resource type="Script" uid="uid://dap08cketeokc" path="res://scripts/on-land.gd" id="1_6yw5w"]
 [ext_resource type="Texture2D" uid="uid://boa6wntccy372" path="res://images/tilesets/ground.png" id="2_tk3rm"]
 [ext_resource type="Texture2D" uid="uid://b0ts755ainn7x" path="res://images/buildings/store.png" id="3_g5rcc"]
 [ext_resource type="Texture2D" uid="uid://c8146gf5yrfpf" path="res://images/buildings/market.png" id="4_ireda"]
-[ext_resource type="Script" path="res://scripts/scene-change-area.gd" id="5_b230x"]
+[ext_resource type="Script" uid="uid://djy5h3dbj3yrj" path="res://scripts/scene-change-area.gd" id="5_b230x"]
 [ext_resource type="Texture2D" uid="uid://x2dyef0dqu0w" path="res://images/character/fishing/fishing1.png" id="5_ldki6"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="5_o0vvo"]
+[ext_resource type="Script" uid="uid://dg7v4f211m2ol" path="res://scripts/camera.gd" id="5_o0vvo"]
 [ext_resource type="Texture2D" uid="uid://jt0gh51d221p" path="res://images/character/fishing/fishing2.png" id="6_odbn6"]
 [ext_resource type="Texture2D" uid="uid://cy75l7mf225jk" path="res://images/character/fishing/fishing3.png" id="7_cmvy4"]
 [ext_resource type="Texture2D" uid="uid://cl24apfqjoig" path="res://images/character/idle/idle1.png" id="8_cf8oh"]
@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dctifq5or2igc" path="res://images/character/walking/walking10.png" id="25_uwvk3"]
 [ext_resource type="Texture2D" uid="uid://5kxnflvykm71" path="res://images/character/walking/walking11.png" id="26_4vntv"]
 [ext_resource type="Texture2D" uid="uid://d0ivobbxbfufp" path="res://images/character/walking/walking12.png" id="27_nudcl"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="28_n8dw8"]
+[ext_resource type="Script" uid="uid://7guy3evxwkvf" path="res://scripts/player.gd" id="28_n8dw8"]
 [ext_resource type="Texture2D" uid="uid://c2cw2hss5jorf" path="res://images/9-patch-rect.png" id="29_vu8lx"]
 [ext_resource type="Texture2D" uid="uid://6n1dojqoufdc" path="res://images/fish/sardine.png" id="30_kqw05"]
 [ext_resource type="Texture2D" uid="uid://drxy46wrrc84m" path="res://images/selected-fish-outline.png" id="32_hdkn8"]
@@ -152,7 +152,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 20.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihyqs"]
@@ -539,8 +539,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qxum8"]
 _data = {
-"RESET": SubResource("Animation_yc805"),
-"fade_out": SubResource("Animation_4gtvm")
+&"RESET": SubResource("Animation_yc805"),
+&"fade_out": SubResource("Animation_4gtvm")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_u2cqi"]
@@ -580,8 +580,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nds31"]
 _data = {
-"RESET": SubResource("Animation_i72w6"),
-"fade_out": SubResource("Animation_tkf5l")
+&"RESET": SubResource("Animation_i72w6"),
+&"fade_out": SubResource("Animation_tkf5l")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ftk2"]
@@ -717,7 +717,7 @@ horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/FishCaught"]
 libraries = {
-"": SubResource("AnimationLibrary_qxum8")
+&"": SubResource("AnimationLibrary_qxum8")
 }
 
 [node name="InventoryFull" type="Label" parent="Camera2D"]
@@ -731,7 +731,7 @@ horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/InventoryFull"]
 libraries = {
-"": SubResource("AnimationLibrary_nds31")
+&"": SubResource("AnimationLibrary_nds31")
 }
 
 [node name="Inventory" type="NinePatchRect" parent="Camera2D"]
@@ -815,6 +815,6 @@ horizontal_alignment = 1
 [connection signal="body_exited" from="Store/Area2D" to="." method="clear_mode"]
 [connection signal="body_entered" from="Market/Area2D" to="." method="enter_market_mode"]
 [connection signal="body_exited" from="Market/Area2D" to="." method="clear_mode"]
-[connection signal="body_entered" from="FishingArea" to="." method="enter_fishing_mode"]
+[connection signal="body_entered" from="FishingArea" to="." method="enter_fishing_mode" binds= [1]]
 [connection signal="body_exited" from="FishingArea" to="." method="clear_mode"]
 [connection signal="body_entered" from="DivingArea" to="DivingArea" method="_on_body_entered"]
