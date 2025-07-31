@@ -1,9 +1,10 @@
 extends Label
 
-var rootnode
+var gc
 
-func _ready() -> void:
-	rootnode = get_node("../..")
+func _ready():
+	gc = get_node("/root/Main")
+	update()
 
-func _process(_delta: float) -> void:
-	text = "$" + str(rootnode.money).pad_decimals(2)
+func update():
+	text = "$" + str(gc.money).pad_decimals(2) # Display number with zeros at the end if needed

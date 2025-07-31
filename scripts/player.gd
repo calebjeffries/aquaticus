@@ -1,43 +1,48 @@
-extends AnimatedSprite2D
+extends CharacterBody2D
 
-var cameranode
+var sprite_node
 
 var enabled = true
 var fishing = false
-var xdirection = 0
+var direction = 0
+var original_position
 
 @export var speed : float
 
 func _ready():
-	cameranode = get_node("../..")
-	play_animation()
+	sprite_node = get_node("Sprite")
+	play_animation() # Start animation
 
-func _physics_process(delta: float) -> void:
-	if enabled == true:
-		if fishing == true:
-			position.x = 20
-			play("fishing")
-			return
-		position.x = 0
-		if Input.is_action_pressed("left"):
-			xdirection = -1
-		elif Input.is_action_pressed("right"):
-			xdirection = 1
+# Movement
+func _physics_process(_delta: float):
+	if enabled == true and fishing == false:
+		# Get direction from input
+		direction = Input.get_axis("left", "right")
+		if direction:
+			velocity.x = direction * speed
+			move_and_slide() # Move if there's input
 		else:
-			xdirection = 0
-			cameranode.position = round(cameranode.position)
-	else:
-		xdirection = 0
-		cameranode.position = round(cameranode.position)
-	cameranode.position.x += speed * delta * xdirection
-	play_animation()
+			position = round(position) # Otherwise, snap to the pixels
+		play_animation() # Play correct animation
 
+# Play correct animation in the correct direction
 func play_animation():
-	if xdirection == 1:
-		flip_h = 0
-		play("walking")
-	elif xdirection == -1:
-		flip_h = 1
-		play("walking")
+	if direction > 0:
+		sprite_node.flip_h = 0
+		sprite_node.play("walking")
+	elif direction < 0:
+		sprite_node.flip_h = 1
+		sprite_node.play("walking")
 	else:
-		play("idle")
+		sprite_node.play("idle")
+
+func start_fishing():
+	original_position = position.x # Save position for when you stop fishing
+	position.x = original_position + 20 # Move ahead to compensate for the bigger sprite
+	sprite_node.play("fishing") # Play animation
+	fishing = true # Stop movement and set state
+
+func stop_fishing():
+	sprite_node.play("idle") # Play idle animation
+	position.x = original_position # Move to original position with the smaller sprite
+	fishing = false # Go back to original controls

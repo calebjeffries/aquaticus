@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c04q6jqgp603b"]
+
+[ext_resource type="Texture2D" uid="uid://bwt7cagt11tff" path="res://images/treasure-chest.png" id="1_guqyf"]
+[ext_resource type="Script" path="res://scripts/treasure-chest.gd" id="2_d5kif"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1i35"]
+radius = 32.0
+
+[sub_resource type="Gradient" id="Gradient_5wx1n"]
+offsets = PackedFloat32Array(0, 0.753247)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ilfic"]
+gradient = SubResource("Gradient_5wx1n")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="TreasureChest" type="Sprite2D"]
+position = Vector2(168, 304)
+texture = ExtResource("1_guqyf")
+script = ExtResource("2_d5kif")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_h1i35")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.86, 0.358333, 0, 1)
+texture = SubResource("GradientTexture2D_ilfic")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]
