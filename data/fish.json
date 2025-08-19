@@ -1,5 +1,5 @@
 {
-	"fish": [
+	"saltwater": [
 		{
 			"name": "shrimp",
 			"texture": "res://images/fish/shrimp.png",
@@ -28,12 +28,48 @@
 			"quality": 18
 		},
 		{
-			"name": "salmon",
-			"texture": "res://images/fish/salmon.png",
-			"weightmin": 2.25,
-			"weightmax": 9,
+			"name": "haddock",
+			"texture": "res://images/fish/haddock.png",
+			"weightmin": 0.9,
+			"weightmax": 3.2,
+			"lengthmin": 30,
+			"lengthmax": 100,
+			"quality": 16
+		},
+		{
+			"name": "lobster",
+			"texture": "res://images/fish/lobster.png",
+			"weightmin": 0.45,
+			"weightmax": 3,
+			"lengthmin": 20,
+			"lengthmax": 40,
+			"quality": 68
+		},
+		{
+			"name": "red snapper",
+			"texture": "res://images/fish/red-snapper.png",
+			"weightmin": 0.9,
+			"weightmax": 15,
 			"lengthmin": 38,
-			"lengthmax": 89,
+			"lengthmax": 100,
+			"quality": 50
+		},
+		{
+			"name": "halibut",
+			"texture": "res://images/fish/halibut.png",
+			"weightmin": 10,
+			"weightmax": 200,
+			"lengthmin": 90,
+			"lengthmax": 250,
+			"quality": 28
+		},
+		{
+			"name": "swordfish",
+			"texture": "res://images/fish/swordfish.png",
+			"weightmin": 90,
+			"weightmax": 250,
+			"lengthmin": 250,
+			"lengthmax": 455,
 			"quality": 28
 		},
 		{
@@ -44,6 +80,107 @@
 			"lengthmin": 100,
 			"lengthmax": 450,
 			"quality": 44
+		},
+		{
+			"name": "great white",
+			"texture": "res://images/fish/great-white.png",
+			"weightmin": 680,
+			"weightmax": 1250,
+			"lengthmin": 340,
+			"lengthmax": 490,
+			"quality": 50
 		}
+	],
+	"freshwater": [
+		{
+			"name": "minnow",
+			"texture": "res://images/fish/minnow.png",
+			"weightmin": 0.002,
+			"weightmax": 0.015,
+			"lengthmin": 2,
+			"lengthmax": 10,
+			"quality": 26
+		},
+		{
+			"name": "crayfish",
+			"texture": "res://images/fish/crayfish.png",
+			"weightmin": 0.04,
+			"weightmax": 0.45,
+			"lengthmin": 3,
+			"lengthmax": 30,
+			"quality": 30
+		},
+		{
+			"name": "sucker",
+			"texture": "res://images/fish/sucker.png",
+			"weightmin": 0.4,
+			"weightmax": 0.9,
+			"lengthmin": 30,
+			"lengthmax": 50,
+			"quality": 19
+		},
+		{
+			"name": "trout",
+			"texture": "res://images/fish/trout.png",
+			"weightmin": 0.9,
+			"weightmax": 3.6,
+			"lengthmin": 20,
+			"lengthmax": 70,
+			"quality": 15
+		},
+		{
+			"name": "bass",
+			"texture": "res://images/fish/bass.png",
+			"weightmin": 0.45,
+			"weightmax": 4.5,
+			"lengthmin": 30,
+			"lengthmax": 64,
+			"quality": 18
+		},
+		{
+			"name": "salmon",
+			"texture": "res://images/fish/salmon.png",
+			"weightmin": 2.25,
+			"weightmax": 9,
+			"lengthmin": 38,
+			"lengthmax": 89,
+			"quality": 28
+		},
+		{
+			"name": "eel",
+			"texture": "res://images/fish/eel.png",
+			"weightmin": 4,
+			"weightmax": 9,
+			"lengthmin": 60,
+			"lengthmax": 200,
+			"quality": 40
+		},
+		{
+			"name": "sturgeon",
+			"texture": "res://images/fish/sturgeon.png",
+			"weightmin": 10,
+			"weightmax": 250,
+			"lengthmin": 90,
+			"lengthmax": 370,
+			"quality": 11
+		},
+		{
+			"name": "catish",
+			"texture": "res://images/fish/catfish.png",
+			"weightmin": 3,
+			"weightmax": 300,
+			"lengthmin": 50,
+			"lengthmax": 275,
+			"quality": 16
+		},
+		{
+			"name": "goldfish",
+			"texture": "res://images/fish/goldfish.png",
+			"weightmin": 0.025,
+			"weightmax": 0.6,
+			"lengthmin": 3,
+			"lengthmax": 25,
+			"quality": 147887
+		},
 	]
 }

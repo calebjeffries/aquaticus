@@ -17,6 +17,7 @@ class Fish:
 var money = 0
 var inventory = []
 var rod_level = 1
+var in_boat = false
 var dead = false
 
 var action1_func
@@ -93,3 +94,9 @@ func switch_scene(path: String):
 	
 	# Wait until no physics processes are being run to switch scenes
 	switch_scene_hard.call_deferred(path)
+
+func get_player_node():
+	for child in get_children(): # Remove all children except for the UI
+		if child.name != "CanvasLayer":
+			return child.get_node("Player")
+	return null

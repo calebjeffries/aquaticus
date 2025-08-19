@@ -17,5 +17,5 @@ func _on_body_exited(body: Node2D):
 
 # When the chest is opened
 func open():
-	gc.money_add(randi() % (10 * gc.rod_level) + 1) # Add a random amount of money
+	gc.money_add(randi() % (10 * gc.rod_level ** 2) + 1) # Add a random amount of money
 	queue_free() # Delete the chest
