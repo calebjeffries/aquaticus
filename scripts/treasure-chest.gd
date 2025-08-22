@@ -1,6 +1,7 @@
 extends Sprite2D
 
 var gc
+var coin_explosion = preload("res://scenes/coin_explosion.tscn")
 
 func _ready():
 	gc = get_node('/root/Main')
@@ -17,5 +18,8 @@ func _on_body_exited(body: Node2D):
 
 # When the chest is opened
 func open():
-	gc.money_add(randi() % (10 * gc.rod_level ** 2) + 1) # Add a random amount of money
+	var coins = coin_explosion.instantiate()
+	coins.position = position
+	coins.explode(randi() % (10 * gc.rod_level ** 2) + 1) # Create a random amount of coins
+	add_sibling(coins) # Make a coin explosion
 	queue_free() # Delete the chest

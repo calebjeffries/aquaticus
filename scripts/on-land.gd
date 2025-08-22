@@ -6,30 +6,14 @@ var fish_caught_icon
 var fish_caught_name
 var fish_caught_weight
 var fish_caught_length
-var inventory_full
 var store_node
 var store_level_text
 var store_price_text
 var player_node
 var player_sprite
 
-var fish_info
 var current_available_fish
 var fishing_direction
-
-# Class for fish
-class Fish:
-	var name: String
-	var weight: float
-	var length: float
-	var quality: int
-	var texture: String
-	func _init(fish_name: String, fish_weight: float, fish_length: float, fish_quality: int, fish_texture: String):
-		name = fish_name
-		weight = fish_weight
-		length = fish_length
-		quality = fish_quality
-		texture = fish_texture
 
 func _ready():
 	# Assign nodes
@@ -39,28 +23,21 @@ func _ready():
 	fish_caught_name = fish_caught.get_node("FishName")
 	fish_caught_weight = fish_caught.get_node("Weight")
 	fish_caught_length = fish_caught.get_node("Length")
-	inventory_full = get_node("Camera2D/InventoryFull")
 	store_node = get_node("Camera2D/Store")
 	store_level_text = store_node.get_node("Level")
 	store_price_text = store_node.get_node("Price")
 	player_node = get_node("Player")
 	player_sprite = player_node.get_node("Sprite")
 	
-	# Load fish information
-	var json_file = "res://data/fish.json"
-	var json_file_text = FileAccess.get_file_as_string(json_file)
-	fish_info = JSON.parse_string(json_file_text)
-	
-	# Reset transparent nodes
-	inventory_full.modulate.a = 0
+	# Reset transparent node
 	fish_caught.modulate.a = 0
 
 # Go fishing
 func go_fishing():
 	if player_node.fishing: # Exit if you're already fishing
 		return
-	if len(gc.inventory) >= 5: # Exit if your inventory is full
-		inventory_full.get_node("AnimationPlayer").play("fade_out")
+	if len(gc.inventory) >= gc.inventory_size: # Exit if your inventory is full
+		gc.show_inventory_full()
 		return
 	
 	# Show fishing animation until a fish is caught
@@ -83,7 +60,7 @@ func go_fishing():
 	else:
 		fish_caught_weight.text = str(int(round(weight * 1000))) + "g"
 	fish_caught_length.text = str(int(round(length))) + "cm"
-	gc.inventory.append(Fish.new(catch.name, weight, length, catch.quality, catch.texture))
+	gc.inventory_add(gc.Fish.new(catch.name, weight, length, catch.quality, catch.texture))
 	
 	# Fade out the info box
 	fish_caught.get_node("AnimationPlayer").stop()
@@ -96,7 +73,7 @@ func render_store():
 	
 	# Render the menu
 	store_node.visible = true
-	if gc.rod_level == len(fish_info.saltwater): # If no more upgrades are available, say MAX
+	if gc.rod_level == len(gc.fish_info.saltwater): # If no more upgrades are available, say MAX
 		store_level_text.text = "lvl. " + str(gc.rod_level)
 		store_price_text.text = "MAX"
 		store_price_text.label_settings.font_color = Color(1, 0, 0, 1)
@@ -112,7 +89,7 @@ func render_store():
 
 # Buy a rod upgrade
 func upgrade_rod():
-	if gc.rod_level < len(fish_info.saltwater) and gc.money >= get_rod_price(gc.rod_level + 1):
+	if gc.rod_level < len(gc.fish_info.saltwater) and gc.money >= get_rod_price(gc.rod_level + 1):
 		gc.money_add(-get_rod_price(gc.rod_level + 1))
 		gc.rod_level += 1
 		render_store()
@@ -132,9 +109,9 @@ func enter_store_mode(_body: Node2D = null): # Add a store action
 
 func enter_fishing_mode(_body: Node2D, water_direction: int, type: String): # Add a fishing action
 	if type == "fresh": # Choose the right fish for the location
-		current_available_fish = fish_info.freshwater
+		current_available_fish = gc.fish_info.freshwater
 	elif type == "salt":
-		current_available_fish = fish_info.saltwater
+		current_available_fish = gc.fish_info.saltwater
 	else:
 		assert("invalid water type")
 	fishing_direction = water_direction

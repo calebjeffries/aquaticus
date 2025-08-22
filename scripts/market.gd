@@ -16,15 +16,16 @@ func _ready():
 	inventory_contents = inventory_node.get_node("Contents")
 	inventory_empty_text = inventory_node.get_node("Empty")
 
+# Handle input to select from menu
 func _input(event: InputEvent):
 	if inventory_node.visible == true:
 		if event.is_action_pressed("down"):
 			if selected_inventory_fish < len(gc.inventory)-1:
-				inventory_selector.position.y += 20
+				inventory_selector.position.y += 20 # Move selector sprite down
 				selected_inventory_fish += 1
 		elif event.is_action_pressed("up"):
 			if selected_inventory_fish > 0:
-				inventory_selector.position.y -= 20
+				inventory_selector.position.y -= 20 # Move selector sprite up
 				selected_inventory_fish -= 1
 
 # Show market menu

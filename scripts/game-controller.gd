@@ -17,8 +17,10 @@ class Fish:
 var money = 0
 var inventory = []
 var rod_level = 1
+var inventory_size = 5
 var in_boat = false
 var dead = false
+var fish_info
 
 var action1_func
 var action2_func
@@ -28,13 +30,25 @@ var actions_bar
 var actions_bar_text
 var money_node
 var fade_out_player
+var inventory_full
+var inventory_full_player
 
 func _ready():
 	actions_bar = get_node("CanvasLayer/UI/ActionsBar")
 	actions_bar_text = get_node("CanvasLayer/UI/ActionsBar/Label")
 	money_node = get_node("CanvasLayer/UI/Money")
 	fade_out_player = get_node("CanvasLayer/UI/ColorRect/AnimationPlayer")
+	inventory_full = get_node("CanvasLayer/UI/InventoryFull")
+	inventory_full_player = get_node("CanvasLayer/UI/InventoryFull/AnimationPlayer")
 	add_child(initial_scene.instantiate()) # Load initial scene
+	
+	# Load fish information
+	var json_file = "res://data/fish.json"
+	var json_file_text = FileAccess.get_file_as_string(json_file)
+	fish_info = JSON.parse_string(json_file_text)
+	
+	# Reset transparent node
+	inventory_full.modulate.a = 0
 
 # Process input if there are actions available
 func _input(event: InputEvent):
@@ -75,6 +89,19 @@ func money_add(amount: float):
 	money = snapped(money, 0.01) # Snap to the value of pennies
 	money_node.update() # Update text
 
+# Add a fish to the inventory, if there's space
+func inventory_add(new_fish: Fish) -> bool:
+	if len(inventory) < inventory_size:
+		inventory.append(new_fish)
+		return true
+	else:
+		show_inventory_full()
+		return false
+
+# Show an inventory full message
+func show_inventory_full():
+	inventory_full_player.play("fade_out")
+
 # Die and respawn
 func die():
 	dead = true
@@ -95,8 +122,9 @@ func switch_scene(path: String):
 	# Wait until no physics processes are being run to switch scenes
 	switch_scene_hard.call_deferred(path)
 
+# Get the the player node if available
 func get_player_node():
-	for child in get_children(): # Remove all children except for the UI
+	for child in get_children(): # Get the current loaded scene
 		if child.name != "CanvasLayer":
-			return child.get_node("Player")
+			return child.get_node("Player") # Return the player node
 	return null

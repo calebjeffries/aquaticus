@@ -182,5 +182,52 @@
 			"lengthmax": 25,
 			"quality": 147887
 		},
+	],
+	"bottomdwellers": [
+		{
+			"name": "mussel",
+			"texture": "res://images/items/mussel.png",
+			"weightmin": 0.01,
+			"weightmax": 0.05,
+			"lengthmin": 5,
+			"lengthmax": 15,
+			"quality": 15
+		},
+		{
+			"name": "scallop",
+			"texture": "res://images/items/scallop.png",
+			"weightmin": 0.04,
+			"weightmax": 0.07,
+			"lengthmin": 6,
+			"lengthmax": 15,
+			"quality": 22
+		},
+		{
+			"name": "oyster",
+			"texture": "res://images/items/oyster.png",
+			"weightmin": 0.028,
+			"weightmax": 0.085,
+			"lengthmin": 7,
+			"lengthmax": 25,
+			"quality": 30
+		},
+		{
+			"name": "sea urchin",
+			"texture": "res://images/items/sea-urchin.png",
+			"weightmin": 0.12,
+			"weightmax": 0.5,
+			"lengthmin": 3,
+			"lengthmax": 12,
+			"quality": 75
+		},
+		{
+			"name": "sea cucumber",
+			"texture": "res://images/fish/sea-cucumber.png",
+			"weightmin": 0.05,
+			"weightmax": 4.5,
+			"lengthmin": 5,
+			"lengthmax": 40,
+			"quality": 150
+		}
 	]
 }
