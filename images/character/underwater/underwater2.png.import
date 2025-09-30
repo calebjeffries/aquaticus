@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8146gf5yrfpf"
-path="res://.godot/imported/market.png-bbf17019d8258f4fc1065badaa592dab.ctex"
+uid="uid://dv5tomggcdev3"
+path="res://.godot/imported/underwater2.png-9411df7bb2f968d4fc8c68801209709a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/buildings/market.png"
-dest_files=["res://.godot/imported/market.png-bbf17019d8258f4fc1065badaa592dab.ctex"]
+source_file="res://images/character/underwater/underwater2.png"
+dest_files=["res://.godot/imported/underwater2.png-9411df7bb2f968d4fc8c68801209709a.ctex"]
 
 [params]
 

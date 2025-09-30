@@ -24,8 +24,13 @@ func _physics_process(delta: float):
 		if direction:
 			velocity = direction.normalized() * speed
 			move_and_slide() # Move if there's input
+			if direction.x: # Play the moving animation if moving side to side
+				sprite.play("moving")
+			else:
+				sprite.play("idle")
 		else:
 			position = round(position) # Otherwise, snap to the pixels
+			sprite.play("idle") # And play idle animation
 		
 		# Point the sprite in the right direction
 		if direction.x < 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cs85gek47j8r3"]
+[gd_scene load_steps=29 format=4 uid="uid://cs85gek47j8r3"]
 
 [ext_resource type="Texture2D" uid="uid://1ikf7poxyp3o" path="res://images/tilesets/underwater.png" id="1_5t6xa"]
 [ext_resource type="Script" uid="uid://djy5h3dbj3yrj" path="res://scripts/scene-change-area.gd" id="1_6u2no"]
@@ -8,9 +8,18 @@
 [ext_resource type="Script" uid="uid://bgashvisn1s7v" path="res://scripts/diving.gd" id="2_q4pcu"]
 [ext_resource type="Script" uid="uid://dg7v4f211m2ol" path="res://scripts/camera.gd" id="4_jggy4"]
 [ext_resource type="PackedScene" uid="uid://s2l4hxf856x" path="res://scenes/bottom-dwellers.tscn" id="5_6xfkn"]
-[ext_resource type="Texture2D" uid="uid://bwfbot51sk2uy" path="res://images/character/underwater/underwater.png" id="8_k5kkw"]
 [ext_resource type="Texture2D" uid="uid://32ljqc18mwv8" path="res://images/progressbars/breath/breath-under.png" id="8_ufggo"]
 [ext_resource type="Texture2D" uid="uid://dsojiud422ppv" path="res://images/progressbars/breath/breath-progress.png" id="9_6xfkn"]
+[ext_resource type="Texture2D" uid="uid://cbugs5jrbwokq" path="res://images/character/underwater/underwater1.png" id="11_5te7t"]
+[ext_resource type="Texture2D" uid="uid://dv5tomggcdev3" path="res://images/character/underwater/underwater2.png" id="12_0tey3"]
+[ext_resource type="Texture2D" uid="uid://srtdeecfa8fg" path="res://images/character/underwater/underwater3.png" id="13_iqg18"]
+[ext_resource type="Texture2D" uid="uid://k03va8ulylky" path="res://images/character/underwater/underwater4.png" id="14_r01ru"]
+[ext_resource type="Texture2D" uid="uid://4jthapjgssk6" path="res://images/character/underwater/underwater5.png" id="15_vf1tv"]
+[ext_resource type="Texture2D" uid="uid://c2tq8qpmo3s2t" path="res://images/character/underwater/underwater6.png" id="16_vuinn"]
+[ext_resource type="Texture2D" uid="uid://drw55sai5o28w" path="res://images/character/underwater/underwater7.png" id="17_0qq4w"]
+[ext_resource type="Texture2D" uid="uid://f4a0mpsp7pfg" path="res://images/character/underwater/underwater8.png" id="18_ocxgd"]
+[ext_resource type="Texture2D" uid="uid://me2rwjy8cwts" path="res://images/character/underwater/underwater9.png" id="19_ubf1k"]
+[ext_resource type="Texture2D" uid="uid://bhtgx4s33286h" path="res://images/character/underwater/underwater10.png" id="20_xxv1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21gp6"]
 size = Vector2(8, 24)
@@ -57,6 +66,52 @@ texture = ExtResource("1_5t6xa")
 
 [sub_resource type="TileSet" id="TileSet_pufib"]
 sources/2 = SubResource("TileSetAtlasSource_h6luh")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxd6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_r01ru")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_5te7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0tey3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_iqg18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_r01ru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vf1tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vuinn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0qq4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ocxgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ubf1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xxv1e")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 7.5
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qr7ae"]
 size = Vector2(32, 10)
@@ -157,8 +212,10 @@ value = 32.0
 texture_under = ExtResource("8_ufggo")
 texture_progress = ExtResource("9_6xfkn")
 
-[node name="Sprite" type="Sprite2D" parent="Player"]
-texture = ExtResource("8_k5kkw")
+[node name="Sprite" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_gxd6q")
+animation = &"moving"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_qr7ae")

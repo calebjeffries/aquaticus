@@ -820,6 +820,7 @@ libraries = {
 }
 
 [node name="InventoryFull" type="Label" parent="."]
+layout_mode = 0
 offset_left = -96.0
 offset_top = -72.0
 offset_right = 96.0

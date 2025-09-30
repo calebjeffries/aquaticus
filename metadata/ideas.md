@@ -4,6 +4,7 @@
  - Movement
 
 ## FUTURE BIG UPDATES & SPECIFIC STEPS
+- Collect and recycle garbage
 - Beach/tidal pool scene where you can play as marine life to complete scientific research
 - More locations for fishing
 	- Lava lake

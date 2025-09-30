@@ -7,6 +7,7 @@ var collision_node
 var enabled = true
 var fishing = false
 var walking_direction = 0
+var boat_direction
 var original_position
 
 @export var speed : float
@@ -23,23 +24,14 @@ func _physics_process(_delta: float):
 		return
 	if gc.in_boat:
 		# Get direction from input
-		var boat_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+		boat_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 		
 		if boat_direction:
 			velocity = boat_direction.normalized() * speed
 			move_and_slide() # Move if there's input
 		else:
 			position = round(position) # Otherwise, snap to the pixels
-		
-		# Point in the right direction
-		if boat_direction.x < 0:
-			rotation = 3*PI/2
-		elif boat_direction.x > 0:
-			rotation = PI/2
-		elif boat_direction.y > 0:
-			rotation = PI
-		elif boat_direction.y < 0:
-			rotation = 0
+		play_animation() # Play correct animation
 	elif enabled == true:
 		# Get direction from input
 		walking_direction = Input.get_axis("left", "right")
@@ -54,14 +46,28 @@ func _physics_process(_delta: float):
 
 # Play correct animation in the correct direction
 func play_animation():
-	if walking_direction > 0:
-		sprite_node.flip_h = 0
-		sprite_node.play("walking")
-	elif walking_direction < 0:
-		sprite_node.flip_h = 1
-		sprite_node.play("walking")
+	if not gc.in_boat:
+		if walking_direction > 0:
+			sprite_node.flip_h = 0
+			sprite_node.play("walking")
+		elif walking_direction < 0:
+			sprite_node.flip_h = 1
+			sprite_node.play("walking")
+		else:
+			sprite_node.play("idle")
 	else:
-		sprite_node.play("idle")
+		if boat_direction.length() > 0:
+			sprite_node.play("boat")
+			if boat_direction.x < 0:
+				rotation = 3*PI/2
+			elif boat_direction.x > 0:
+				rotation = PI/2
+			elif boat_direction.y > 0:
+				rotation = PI
+			elif boat_direction.y < 0:
+				rotation = 0
+		else:
+			sprite_node.play("boat-idle")
 
 func start_fishing():
 	rotation = 0
@@ -77,7 +83,7 @@ func start_fishing():
 
 func stop_fishing():
 	if gc.in_boat: # Play correct animation
-		sprite_node.play("boat")
+		sprite_node.play("boat-idle")
 	else:
 		sprite_node.play("idle")
 	position = original_position # Move to original position with the smaller sprite
