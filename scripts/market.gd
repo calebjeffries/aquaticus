@@ -1,7 +1,6 @@
 extends Node2D
 
 var gc
-var player_node
 var inventory_node
 var inventory_selector
 var inventory_contents

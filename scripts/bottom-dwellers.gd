@@ -6,7 +6,7 @@ var item_scene = preload("res://scenes/item.tscn")
 func _ready():
 	gc = get_node("/root/Main")
 	if randi() % 2 == 1: # 50% percent chance of generating a bottom-dweller
-		var type = randi() % min(len(gc.fish_info.bottomdwellers), gc.rod_level) # Choose a type
+		var type = randi() % min(len(gc.fish_info.bottomdwellers), gc.scuba_level) # Choose a type
 		var item_node = item_scene.instantiate()
 		var mollusk_texture = load(gc.fish_info.bottomdwellers[type].texture)
 		item_node.texture = mollusk_texture

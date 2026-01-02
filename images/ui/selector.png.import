@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drxy46wrrc84m"
-path="res://.godot/imported/selected-fish-outline.png-3d6a739297524888619ec77343798c1b.ctex"
+path="res://.godot/imported/selector.png-414aa2e55a52d92f697d2043011400ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/selected-fish-outline.png"
-dest_files=["res://.godot/imported/selected-fish-outline.png-3d6a739297524888619ec77343798c1b.ctex"]
+source_file="res://images/ui/selector.png"
+dest_files=["res://.godot/imported/selector.png-414aa2e55a52d92f697d2043011400ad.ctex"]
 
 [params]
 

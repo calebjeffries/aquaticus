@@ -17,7 +17,9 @@ class Fish:
 var money = 0
 var inventory = []
 var rod_level = 1
-var inventory_size = 5
+var scuba_level = 1
+var inventory_size = 3
+var inventory_max_size = 5
 var in_boat = false
 var dead = false
 var fish_info

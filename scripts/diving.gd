@@ -40,7 +40,7 @@ func _physics_process(delta: float):
 		
 		# Decrease breath if underwater
 		if underwater:
-			breath_value -= breath_rate * delta
+			breath_value -= (breath_rate * delta) / gc.scuba_level
 			breath_bar.value = breath_value
 			if breath_value <= 0: # If you have no breath left, die
 				dead = true

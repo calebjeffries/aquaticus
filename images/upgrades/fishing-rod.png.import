@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2cw2hss5jorf"
-path="res://.godot/imported/9-patch-rect.png-18487322b23614d95e3ff96a449dcb20.ctex"
+uid="uid://b4pc5s3fecxsm"
+path="res://.godot/imported/fishing-rod.png-db8a5f68b4e2cdb97e81fc8b0aa1f849.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/9-patch-rect.png"
-dest_files=["res://.godot/imported/9-patch-rect.png-18487322b23614d95e3ff96a449dcb20.ctex"]
+source_file="res://images/upgrades/fishing-rod.png"
+dest_files=["res://.godot/imported/fishing-rod.png-db8a5f68b4e2cdb97e81fc8b0aa1f849.ctex"]
 
 [params]
 

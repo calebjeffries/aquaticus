@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cx6r0c267t7qh"]
 
-[ext_resource type="Script" uid="uid://c2xd6ux8wxkbd" path="res://coin_explosion.gd" id="1_alsgv"]
+[ext_resource type="Script" uid="uid://c2xd6ux8wxkbd" path="res://scripts/coin-explosion.gd" id="1_alsgv"]
 
 [node name="coin-explosion" type="Node2D"]
 script = ExtResource("1_alsgv")

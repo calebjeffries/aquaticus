@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://c8146gf5yrfpf" path="res://images/structures/market.png" id="1_aifk4"]
 [ext_resource type="Script" uid="uid://e1c2ge3pf0u6" path="res://scripts/market.gd" id="2_iks0y"]
-[ext_resource type="Texture2D" uid="uid://c2cw2hss5jorf" path="res://images/9-patch-rect.png" id="3_d6tgm"]
-[ext_resource type="Texture2D" uid="uid://drxy46wrrc84m" path="res://images/selected-fish-outline.png" id="4_ygeob"]
-[ext_resource type="Texture2D" uid="uid://sgvq2d11wpnn" path="res://images/empty.png" id="5_co8of"]
+[ext_resource type="Texture2D" uid="uid://c2cw2hss5jorf" path="res://images/ui/9-patch-rect.png" id="3_d6tgm"]
+[ext_resource type="Texture2D" uid="uid://drxy46wrrc84m" path="res://images/ui/selector.png" id="4_ygeob"]
+[ext_resource type="Texture2D" uid="uid://sgvq2d11wpnn" path="res://images/ui/empty.png" id="5_co8of"]
 
 [sub_resource type="Image" id="Image_ennqm"]
 data = {
